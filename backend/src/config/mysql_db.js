@@ -1,5 +1,6 @@
 const Mysql = require("mysql2");
 
+// Use a Pool instead of a single Connection for better reliability
 const pool = Mysql.createPool({
   host: process.env.DB_HOST,
   user: process.env.DB_USER,
@@ -14,6 +15,7 @@ const pool = Mysql.createPool({
   },
 });
 
+// Verify connection (using the standard pool for the initial check)
 pool.getConnection((Err, connection) => {
   if (Err) {
     console.error("MySQL connection failed:", Err.message);
