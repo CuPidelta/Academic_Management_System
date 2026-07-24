@@ -20,8 +20,12 @@ app.use("/enrollment", enrollmentRoutes);
 app.use("/grades", gradeRoutes);
 app.use("/instructor", instructorRoutes);
 
-//Start
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`AMS Server running on port ${PORT}`);
-});
+// Only listen locally — Vercel handles this in production
+if (process.env.NODE_ENV !== "production") {
+  const PORT = process.env.PORT || 3000;
+  app.listen(PORT, () => {
+    console.log(`AMS Server running on port ${PORT}`);
+  });
+}
+
+module.exports = app;
