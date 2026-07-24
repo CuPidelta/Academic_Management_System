@@ -1,0 +1,209 @@
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon--blue {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent);
+}
+.stat-icon--green {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success);
+}
+.stat-icon--amber {
+  background: rgba(180, 83, 9, 0.1);
+  color: var(--warning);
+}
+.stat-icon--purple {
+  background: rgba(109, 40, 217, 0.1);
+  color: #7c3aed;
+}
+
+.stat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-value {
+  font-family: "DM Serif Display", serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+.quick-actions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  padding: 1.25rem 1.75rem 1.5rem;
+}
+
+.action-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 1.25rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border);
+  background: #fafcff;
+  text-decoration: none;
+  color: var(--text);
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition),
+    background var(--transition);
+  cursor: pointer;
+}
+
+.action-btn:hover {
+  border-color: var(--accent);
+  background: #f0f6ff;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.1);
+  transform: translateY(-2px);
+}
+
+.action-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-icon--blue {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent);
+}
+.action-icon--green {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success);
+}
+.action-icon--amber {
+  background: rgba(180, 83, 9, 0.1);
+  color: var(--warning);
+}
+.action-icon--purple {
+  background: rgba(109, 40, 217, 0.1);
+  color: #7c3aed;
+}
+
+.action-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--text-soft);
+}
+
+#studentTableBody td:nth-child(1) {
+  font-family: "DM Serif Display", serif;
+  font-size: 0.95rem;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+#studentTableBody td:nth-child(2) {
+  font-weight: 500;
+  color: var(--text);
+}
+
+.btn-enroll {
+  padding: 0.28rem 0.7rem;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  margin-right: 6px;
+}
+
+.btn-enroll:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.btn-view {
+  padding: 0.28rem 0.7rem;
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  background: transparent;
+  border-radius: var(--radius-sm);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-view:hover {
+  border-color: var(--navy);
+  color: var(--navy);
+  background: #f1f5f9;
+}
+
+@media (max-width: 960px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .quick-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .quick-actions {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .stat-value {
+    font-size: 1.6rem;
+  }
+}

@@ -1,0 +1,53 @@
+.label-opt {
+  font-weight: 400;
+  font-size: 0.7rem;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.modal-wide {
+  max-width: 520px;
+  padding: 0;
+  text-align: left;
+}
+
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 1.5rem 1.75rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 3px;
+}
+
+.modal-form {
+  padding: 1.5rem 1.75rem;
+}
+
+.icon-btn {
+  padding: 0.4rem;
+  line-height: 0;
+  flex-shrink: 0;
+}
+
+#units,
+#edit_units {
+  max-width: 120px;
+}
+
+.instructor-unassigned {
+  color: var(--muted);
+  font-style: italic;
+}
+
+td .course-code {
+  font-family: "DM Serif Display", serif;
+  font-size: 0.95rem;
+  color: var(--navy);
+}

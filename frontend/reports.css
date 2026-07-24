@@ -1,0 +1,364 @@
+.btn-export-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.1rem;
+  background: var(--navy);
+  color: white;
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.btn-export-all:hover {
+  background: var(--navy-mid);
+  box-shadow: 0 4px 14px rgba(15, 31, 61, 0.25);
+  transform: translateY(-1px);
+}
+
+
+.reports-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.stat-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition:
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.stat-card:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.09);
+  transform: translateY(-2px);
+}
+
+.stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon--blue {
+  background: rgba(37, 99, 235, 0.1);
+  color: var(--accent);
+}
+.stat-icon--green {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success);
+}
+.stat-icon--amber {
+  background: rgba(180, 83, 9, 0.1);
+  color: var(--warning);
+}
+.stat-icon--purple {
+  background: rgba(109, 40, 217, 0.1);
+  color: #7c3aed;
+}
+
+.stat-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-value {
+  font-family: "DM Serif Display", serif;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: var(--text);
+}
+
+
+.reports-card {
+  padding: 0;
+  overflow: visible;
+}
+
+
+.reports-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  padding: 0 1.75rem;
+}
+
+.tab-btn {
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  border-bottom: 2.5px solid transparent;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition:
+    color var(--transition),
+    border-color var(--transition);
+  margin-bottom: -1px;
+  white-space: nowrap;
+}
+
+.tab-btn:hover {
+  color: var(--text);
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  font-weight: 600;
+}
+
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+  animation: fadeUp 0.25s ease both;
+}
+
+
+.tab-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.1rem 1.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.search-input {
+  flex: 1;
+  max-width: 360px;
+  padding: 0.55rem 0.85rem;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.875rem;
+  color: var(--text);
+  background: #fafafa;
+  outline: none;
+  transition:
+    border-color var(--transition),
+    box-shadow var(--transition);
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+  background: white;
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.search-input::placeholder {
+  color: #c0cad6;
+}
+
+.btn-sm {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+}
+
+
+
+
+#studentReportBody td:nth-child(1),
+#enrollReportBody td:nth-child(1),
+#gradeReportBody td:nth-child(1) {
+  font-weight: 500;
+  color: var(--text);
+}
+
+
+#enrollReportBody td:nth-child(3),
+#gradeReportBody td:nth-child(3) {
+  font-family: "DM Serif Display", serif;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+
+#studentReportBody td:nth-child(3) {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+
+.grade-badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 0.82rem;
+  min-width: 48px;
+  text-align: center;
+}
+
+.grade-pass {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success);
+}
+.grade-fail {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--error);
+}
+.grade-none {
+  background: #f1f5f9;
+  color: var(--muted);
+}
+
+
+.status-pill {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.status-pass {
+  background: rgba(22, 163, 74, 0.1);
+  color: var(--success);
+}
+.status-fail {
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--error);
+}
+.status-pending {
+  background: rgba(180, 83, 9, 0.1);
+  color: var(--warning);
+}
+
+
+#gradeReportBody td:nth-child(4),
+#gradeReportBody td:nth-child(6) {
+  text-align: center;
+}
+
+
+#gradeReportBody td:nth-child(5) {
+  font-style: italic;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+
+@media (max-width: 1100px) {
+  .reports-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .reports-stats {
+    grid-template-columns: 1fr 1fr;
+  }
+  .tab-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .search-input {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .reports-stats {
+    grid-template-columns: 1fr;
+  }
+  .reports-tabs {
+    padding: 0 1rem;
+  }
+  .tab-btn {
+    padding: 0.75rem 0.75rem;
+    font-size: 0.8rem;
+  }
+}
+
+
+.shared-toolbar {
+  border-bottom: none;
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.75rem;
+}
+
+
+#gradeReportTable {
+  width: 100%;
+  table-layout: fixed;
+}
+
+#gradeReportTable th:nth-child(1),
+#gradeReportTable td:nth-child(1) {
+  width: 100px;
+}
+
+#gradeReportTable th:nth-child(2),
+#gradeReportTable td:nth-child(2) {
+  width: 140px;
+}
+
+#gradeReportTable th:nth-child(3),
+#gradeReportTable td:nth-child(3) {
+  width: 100px;
+}
+
+#gradeReportTable th:nth-child(4),
+#gradeReportTable td:nth-child(4) {
+  width: 80px;
+  text-align: center;
+}
+
+#gradeReportTable th:nth-child(5),
+#gradeReportTable td:nth-child(5) {
+  width: 110px;
+}
+
+#gradeReportTable th:nth-child(6),
+#gradeReportTable td:nth-child(6) {
+  width: 90px;
+  text-align: center;
+}
+
+#gradeReportTable td:nth-child(1) {
+  font-family: "DM Serif Display", serif;
+  font-size: 0.95rem;
+  color: var(--navy);
+}
+
+#gradeReportTable td:nth-child(5) {
+  color: var(--text-soft);
+}

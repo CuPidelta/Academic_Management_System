@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Dashboard | AMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="admin.css" />
+
+    
+    <script>
+      (function () {
+        const token = localStorage.getItem("token");
+        const role  = localStorage.getItem("role");
+        if (!token || (role !== "admin" && role !== "registrar")) {
+          window.location.replace("login.html");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+
+    
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+            <rect x="2" y="2" width="10" height="10" rx="2" fill="currentColor" opacity="0.9"/>
+            <rect x="16" y="2" width="10" height="10" rx="2" fill="currentColor" opacity="0.5"/>
+            <rect x="2" y="16" width="10" height="10" rx="2" fill="currentColor" opacity="0.5"/>
+            <rect x="16" y="16" width="10" height="10" rx="2" fill="currentColor" opacity="0.9"/>
+          </svg>
+        </div>
+        <span class="brand-name">AMS</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <p class="nav-label">Overview</p>
+        <a href="admin_home.html" class="nav-item active">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8.5L8 2l6 6.5V14H10v-3H6v3H2V8.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+          Dashboard
+        </a>
+
+        <p class="nav-label" style="margin-top:1rem">Management</p>
+        <a href="admin_dashboard.html" class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.3"/><path d="M2 14c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          User Accounts
+        </a>
+        <a href="course_management.html" class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="3" width="12" height="10" rx="1.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 6h6M5 9h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Courses
+        </a>
+        <a href="enrollment.html" class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="6" cy="5" r="2.5" stroke="currentColor" stroke-width="1.3"/><path d="M2 13c0-2.2 1.8-4 4-4s4 1.8 4 4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M11 7l1.5 1.5L15 6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Enrollment
+        </a>
+        <a href="reports.html" class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2h7l3 3v9a1 1 0 01-1 1H3a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.3"/><path d="M10 2v4h4M5 8h6M5 11h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+          Reports
+        </a>
+
+        <p class="nav-label" style="margin-top:1.5rem">Account</p>
+        <button class="nav-item nav-logout" onclick="logout()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3H3a1 1 0 00-1 1v8a1 1 0 001 1h3M10 11l3-3-3-3M13 8H6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Logout
+        </button>
+      </nav>
+    </aside>
+
+    
+    <div class="main-wrap">
+
+      
+      <header class="topbar">
+        <div>
+          <h1 class="page-title">Admin Dashboard</h1>
+          <p class="page-sub">System overview and quick access</p>
+        </div>
+        <div class="topbar-right">
+          <div class="user-chip">
+            <div class="user-avatar" id="adminAvatar">A</div>
+            <div>
+              <p class="user-name" id="adminNameDisplay">Loading…</p>
+              <p class="user-role" id="adminRoleDisplay">—</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+
+        
+        <div class="admin-stats">
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--blue">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Total Students</p>
+              <p class="stat-value" id="statStudents">—</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--green">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M15 8a3 3 0 000 6M17 9.5c1.1.6 1.8 1.7 1.8 3s-.7 2.4-1.8 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Total Instructors</p>
+              <p class="stat-value" id="statInstructors">—</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--amber">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 8h8M6 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Total Courses</p>
+              <p class="stat-value" id="statCourses">—</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--purple">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.4 5 5.6.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5L2 7.8l5.6-.8L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Total Enrollments</p>
+              <p class="stat-value" id="statEnrollments">—</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--teal">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 10h12M10 4v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Admin / Staff</p>
+              <p class="stat-value" id="statStaff">—</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--red">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 14l4-4 3 3 4-5 3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="3" width="16" height="14" rx="2" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Passing Rate</p>
+              <p class="stat-value" id="statPassRate">—</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Quick Actions</h2>
+              <p class="card-sub">Jump to common admin operations</p>
+            </div>
+          </div>
+          <div class="quick-actions">
+            <a href="admin_dashboard.html" class="action-btn">
+              <div class="action-icon action-icon--blue">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="8" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 17c0-3.3 2.7-6 6-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M14 11v6M11 14h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <span class="action-label">User Accounts</span>
+            </a>
+            <a href="course_management.html" class="action-btn">
+              <div class="action-icon action-icon--amber">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M6 8h8M6 12h5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <span class="action-label">Manage Courses</span>
+            </a>
+            <a href="enrollment.html" class="action-btn">
+              <div class="action-icon action-icon--green">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="7" cy="6" r="3" stroke="currentColor" stroke-width="1.5"/><path d="M2 17c0-3.3 2.7-6 5-6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M12 13l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="action-label">Enrollment</span>
+            </a>
+            <a href="grades.html" class="action-btn">
+              <div class="action-icon action-icon--purple">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2.4 5 5.6.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5L2 7.8l5.6-.8L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+              </div>
+              <span class="action-label">View Grades</span>
+            </a>
+            <a href="reports.html" class="action-btn">
+              <div class="action-icon action-icon--red">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M4 2h9l4 4v12a1 1 0 01-1 1H4a1 1 0 01-1-1V3a1 1 0 011-1z" stroke="currentColor" stroke-width="1.5"/><path d="M13 2v5h5M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+              </div>
+              <span class="action-label">Reports</span>
+            </a>
+          </div>
+        </div>
+
+        
+        <div class="card table-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Recent Students</h2>
+              <p class="card-sub" id="recentStudentSub">Latest registered students</p>
+            </div>
+            <a href="admin_dashboard.html" class="btn-ghost" style="text-decoration:none">View All →</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student ID</th>
+                  <th>Full Name</th>
+                  <th>Program &amp; Year</th>
+                </tr>
+              </thead>
+              <tbody id="recentStudentsBody">
+                <tr><td colspan="3" class="table-empty">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        
+        <div class="card table-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">Recent Enrollments</h2>
+              <p class="card-sub" id="recentEnrollSub">Latest enrollment records</p>
+            </div>
+            <a href="enrollment.html" class="btn-ghost" style="text-decoration:none">View All →</a>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Student Name</th>
+                  <th>Course Code</th>
+                  <th>Course Title</th>
+                  <th>Term</th>
+                  <th>Semester</th>
+                </tr>
+              </thead>
+              <tbody id="recentEnrollBody">
+                <tr><td colspan="5" class="table-empty">Loading…</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="admin_home.js"></script>
+  </body>
+</html>

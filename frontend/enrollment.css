@@ -1,0 +1,101 @@
+#enrollmentForm.form-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+
+#student_id option,
+#course_id option {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+}
+
+
+
+
+#enrollmentTableBody td:nth-child(2) {
+  font-family: 'DM Serif Display', serif;
+  font-size: 0.95rem;
+  color: var(--navy);
+  font-weight: 600;
+}
+
+
+#enrollmentTableBody td:nth-child(1) {
+  font-weight: 500;
+  color: var(--text);
+}
+
+
+.btn-drop {
+  padding: 0.28rem 0.7rem;
+  border: 1.5px solid #fbbf24;
+  color: #b45309;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.btn-drop:hover {
+  background: #b45309;
+  color: white;
+  border-color: #b45309;
+}
+
+
+.select-loading {
+  color: var(--muted);
+  font-style: italic;
+}
+
+
+.form-msg.warning {
+  color: var(--warning);
+  background: rgba(180, 83, 9, 0.07);
+  padding: 0.5rem 0.75rem;
+}
+
+
+#enrollmentCount {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+#enrollmentCount::before {
+  content: '';
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--success);
+  flex-shrink: 0;
+}
+
+
+@media (max-width: 700px) {
+  #enrollmentForm.form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+#enrollmentForm.form-grid {
+  grid-template-columns: 1fr 1fr;
+}
+
+
+#term {
+  width: 100%;
+}
+
+
+.field-error {
+  display: none;
+  font-size: 0.78rem;
+  color: var(--error);
+  margin-top: 0.35rem;
+}

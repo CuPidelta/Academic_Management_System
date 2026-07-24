@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AMS — Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="login.css" />
+  </head>
+  <body>
+    <div class="bg-grid"></div>
+    <div class="bg-glow"></div>
+
+    <div class="split-layout">
+      
+      <div class="left-panel">
+        <div class="brand">
+          <div class="brand-icon">
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+              <rect
+                x="2"
+                y="2"
+                width="10"
+                height="10"
+                rx="2"
+                fill="currentColor"
+                opacity="0.9"
+              />
+              <rect
+                x="16"
+                y="2"
+                width="10"
+                height="10"
+                rx="2"
+                fill="currentColor"
+                opacity="0.5"
+              />
+              <rect
+                x="2"
+                y="16"
+                width="10"
+                height="10"
+                rx="2"
+                fill="currentColor"
+                opacity="0.5"
+              />
+              <rect
+                x="16"
+                y="16"
+                width="10"
+                height="10"
+                rx="2"
+                fill="currentColor"
+                opacity="0.9"
+              />
+            </svg>
+          </div>
+          <span class="brand-name">AMS</span>
+        </div>
+
+        <div class="left-content">
+          <h1 class="left-headline">Academic<br />Management<br />System</h1>
+        </div>
+
+        <p class="left-footer">© 2026 Academic Management System</p>
+      </div>
+
+      
+      <div class="right-panel">
+        <div class="card">
+          <div class="card-header">
+            <h2 class="card-title">Welcome back</h2>
+            <p class="card-subtitle">Sign in to your account to continue</p>
+          </div>
+
+          <form id="loginForm" novalidate>
+            <div class="form-group" id="emailGroup">
+              <label for="email">Email Address</label>
+              <div class="input-wrap">
+                <svg
+                  class="input-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <path
+                    d="M2 4a1 1 0 011-1h10a1 1 0 011 1v8a1 1 0 01-1 1H3a1 1 0 01-1-1V4z"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M2 4l6 5 6-5"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <input
+                  type="email"
+                  id="email"
+                  placeholder="you@gmail.com"
+                  autocomplete="email"
+                />
+              </div>
+              <span class="field-error" id="emailError"></span>
+            </div>
+
+            <div class="form-group" id="passwordGroup">
+              <label for="password">Password</label>
+              <div class="input-wrap">
+                <svg
+                  class="input-icon"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                >
+                  <rect
+                    x="3"
+                    y="7"
+                    width="10"
+                    height="7"
+                    rx="1.5"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                  />
+                  <path
+                    d="M5 7V5a3 3 0 016 0v2"
+                    stroke="currentColor"
+                    stroke-width="1.2"
+                    stroke-linecap="round"
+                  />
+                </svg>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="••••••••"
+                  autocomplete="current-password"
+                />
+                <button
+                  type="button"
+                  class="toggle-pw"
+                  id="togglePw"
+                  aria-label="Toggle password visibility"
+                >
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path
+                      d="M1 8s2.5-5 7-5 7 5 7 5-2.5 5-7 5-7-5-7-5z"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      opacity="0.4"
+                    />
+                    <line
+                      x1="2"
+                      y1="2"
+                      x2="14"
+                      y2="14"
+                      stroke="currentColor"
+                      stroke-width="1.2"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+              <span class="field-error" id="passwordError"></span>
+            </div>
+
+            <button type="submit" class="btn-submit" id="submitBtn">
+              <span class="btn-text">Sign In</span>
+              <span class="btn-loader" aria-hidden="true"></span>
+            </button>
+
+            <p class="msg" id="msg" role="alert"></p>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="auth.js"></script>
+  </body>
+</html>

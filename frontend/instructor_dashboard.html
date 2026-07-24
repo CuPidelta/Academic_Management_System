@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructor Dashboard | AMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="admin.css" />
+    <link rel="stylesheet" href="instructor.css" />
+
+    
+    <script>
+      (function () {
+        const token = localStorage.getItem("token");
+        const role = localStorage.getItem("role");
+        if (!token || role !== "instructor") {
+          window.location.replace("login.html");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+            <rect
+              x="2"
+              y="2"
+              width="10"
+              height="10"
+              rx="2"
+              fill="currentColor"
+              opacity="0.9"
+            />
+            <rect
+              x="16"
+              y="2"
+              width="10"
+              height="10"
+              rx="2"
+              fill="currentColor"
+              opacity="0.5"
+            />
+            <rect
+              x="2"
+              y="16"
+              width="10"
+              height="10"
+              rx="2"
+              fill="currentColor"
+              opacity="0.5"
+            />
+            <rect
+              x="16"
+              y="16"
+              width="10"
+              height="10"
+              rx="2"
+              fill="currentColor"
+              opacity="0.9"
+            />
+          </svg>
+        </div>
+        <span class="brand-name">AMS</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <p class="nav-label">My Portal</p>
+        <a href="instructor_dashboard.html" class="nav-item active">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M2 8.5L8 2l6 6.5V14H10v-3H6v3H2V8.5z"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Dashboard
+        </a>
+        <a href="grades.html" class="nav-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <rect
+              x="2"
+              y="3"
+              width="12"
+              height="10"
+              rx="1.5"
+              stroke="currentColor"
+              stroke-width="1.3"
+            />
+            <path
+              d="M5 6h6M5 9h4"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linecap="round"
+            />
+          </svg>
+          Grades
+        </a>
+
+        <p class="nav-label" style="margin-top: 1.5rem">Account</p>
+        <button class="nav-item nav-logout" onclick="logout()">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path
+              d="M6 3H3a1 1 0 00-1 1v8a1 1 0 001 1h3M10 11l3-3-3-3M13 8H6"
+              stroke="currentColor"
+              stroke-width="1.3"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+          Logout
+        </button>
+      </nav>
+    </aside>
+
+    
+    <div class="main-wrap">
+      
+      <header class="topbar">
+        <div>
+          <h1 class="page-title">Instructor Portal</h1>
+          <p class="page-sub">Welcome, <span id="welcomeName">—</span></p>
+        </div>
+        <div class="topbar-right">
+          <div class="user-chip">
+            <div class="user-avatar" id="instructorAvatar">I</div>
+            <div>
+              <p class="user-name" id="userName">Loading…</p>
+              <p class="user-role">Instructor</p>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <div class="content">
+        
+        <div class="instructor-stats">
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--blue">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect
+                  x="2"
+                  y="4"
+                  width="16"
+                  height="13"
+                  rx="2"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M6 8h8M6 12h5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Assigned Courses</p>
+              <p class="stat-value" id="courseCount">—</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--green">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle
+                  cx="8"
+                  cy="6"
+                  r="3"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M2 17c0-3.3 2.7-6 6-6s6 2.7 6 6"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+                <path
+                  d="M14 11v6M11 14h6"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Total Students</p>
+              <p class="stat-value" id="studentCount">—</p>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-icon stat-icon--amber">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                  d="M10 2l2.4 5 5.6.8-4 3.9.9 5.5L10 14.5l-4.9 2.7.9-5.5L2 7.8l5.6-.8L10 2z"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </div>
+            <div class="stat-body">
+              <p class="stat-label">Total Units</p>
+              <p class="stat-value" id="unitCount">—</p>
+            </div>
+          </div>
+        </div>
+
+        
+        <div class="card table-card">
+          <div class="card-head">
+            <div>
+              <h2 class="card-title">My Assigned Courses</h2>
+              <p class="card-sub" id="courseSubtitle">Loading your courses…</p>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Course Code</th>
+                  <th>Course Title</th>
+                  <th>Units</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="assignedCoursesBody">
+                <tr>
+                  <td colspan="4" class="table-empty">Loading your courses…</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="instructor.js"></script>
+  </body>
+</html>
