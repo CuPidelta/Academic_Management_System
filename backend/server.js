@@ -13,12 +13,14 @@ const courseRoutes = require("./src/routes/courseRoutes");
 const enrollmentRoutes = require("./src/routes/enrollmentRoutes");
 const gradeRoutes = require("./src/routes/gradeRoutes");
 const instructorRoutes = require("./src/routes/instructorRoutes");
+const debugRoutes = require("./src/routes/debugRoutes");
 
 app.use("/auth", authRoutes);
 app.use("/courses", courseRoutes);
 app.use("/enrollment", enrollmentRoutes);
 app.use("/grades", gradeRoutes);
 app.use("/instructor", instructorRoutes);
+app.use("/debug", debugRoutes);
 
 // Only listen locally — Vercel handles this in production
 if (process.env.NODE_ENV !== "production") {
